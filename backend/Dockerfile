@@ -16,10 +16,10 @@ RUN apk add --no-cache \
     git `# для установки зависимостей из git` \
     libpq `# для psycopg2` \
     libjpeg-turbo zlib libffi cairo libwebp `# для pillow`
-COPY poetry.lock pyproject.toml /app/
-RUN pip install --no-cache-dir cryptography==2.1.4
-RUN pip3 install poetry
-RUN poetry config virtualenvs.create false
-RUN poetry install --no-interaction --no-ansi
-RUN apk del --no-cache build-deps
+
+RUN pip install --upgrade pip
+COPY requirements.txt /app/
+RUN pip install -r requirements.txt
+
+
 COPY / /app/

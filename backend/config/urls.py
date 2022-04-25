@@ -6,12 +6,15 @@ from drf_spectacular.views import SpectacularSwaggerView, SpectacularAPIView
 
 
 from .routers import router
+from api.urls import router as api_router
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include(router.urls)),
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
     path("api/docs/", SpectacularSwaggerView.as_view(url_name="schema"), name="docs"),
+    # path("v1/api/", include((api_router.urls, "api"))),
+    path("v1/api/", include("api.urls"))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

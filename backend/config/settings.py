@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     # third party
     "rest_framework",
     "drf_spectacular",
+    "api"
     # apps
     # "images.apps.ImagesConfig",
 ]
