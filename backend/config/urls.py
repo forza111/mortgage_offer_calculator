@@ -6,7 +6,7 @@ from drf_spectacular.views import SpectacularSwaggerView, SpectacularAPIView
 
 
 from .routers import router
-from api.urls import router as api_router
+# from api.urls import router as api_router
 
 urlpatterns = [
     path("admin/", admin.site.urls),

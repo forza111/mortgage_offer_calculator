@@ -24,10 +24,11 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites",
     "django.forms",
+    'django_filters',
     # third party
     "rest_framework",
     "drf_spectacular",
-    "api"
+    "api",
     # apps
     # "images.apps.ImagesConfig",
 ]

@@ -1,19 +1,8 @@
-# from django.urls import path
-#
-# from .views import OfferViewSet
-#
-# app_name = "api"
-#
-# urlpatterns = [
-#     path('offer/', OfferViewSet.as_view({"get": "list"}))
-# ]
-
-
-from rest_framework.routers import DefaultRouter
+from django.urls import path
 
 from .views import OfferViewSet
 
-router = DefaultRouter()
-router.register(r"offer", OfferViewSet, basename='user')
-
-urlpatterns = router.urls
+urlpatterns = [
+    path('offer/', OfferViewSet.as_view({"post": "create", "get": "list"})),
+    path('offer/<int:pk>', OfferViewSet.as_view({"patch": "partial_update", "delete": "destroy"})),
+]
