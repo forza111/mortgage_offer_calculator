@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "drf_spectacular",
     "api",
+    "calculator"
     # apps
     # "images.apps.ImagesConfig",
 ]
@@ -50,9 +51,13 @@ if DEBUG:
 
 ROOT_URLCONF = "config.urls"
 
+SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        'DIRS': [os.path.join(SETTINGS_PATH, 'templates')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

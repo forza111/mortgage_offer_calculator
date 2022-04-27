@@ -8,5 +8,5 @@ class OfferViewSet(viewsets.ModelViewSet):
     serializer_class = MortageOfferSerializer
     queryset = MortageOffer.objects.all()
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['term_min',]
+    filterset_fields = ['term_min', ]
 
