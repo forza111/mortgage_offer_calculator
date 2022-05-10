@@ -10,12 +10,10 @@ from .routers import router
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/", include(router.urls)),
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
     path("api/docs/", SpectacularSwaggerView.as_view(url_name="schema"), name="docs"),
-    # path("v1/api/", include((api_router.urls, "api"))),
-    path("v1/api/", include("api.urls")),
-    path("main", include("calculator.urls"))
+    path("api/", include("api.urls")),
+    path("main", include("calculator.urls"), name="main")
 
 ]
 
