@@ -12,7 +12,7 @@ def get_offers(price: int, deposit: int, term: int) -> str:
     JSON or error status code
     """
     query_params = {"price": price, "deposit": deposit, "term": term}
-    response = requests.get("http://127.0.0.1:8000/v1/api/offer/", params=query_params)
+    response = requests.get("http://127.0.0.1:8000/api/offer/", params=query_params)
     if response.status_code == 200:
         data = response.json()
         return data
