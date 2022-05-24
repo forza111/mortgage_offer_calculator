@@ -1,8 +1,12 @@
 ### Локальный запуск приложения
+#### Настройка переменных окружения
+Переменные окружения находятся в фаиле .env.dev и содержат необходимые значения. 
+При необходимости измените их.
+
 #### Запуск контейнеров
 ```shell
 docker stop $(docker ps -aq)
-docker-compose -f docker-compose.yml -f docker-compose.override.yml up --build
+docker-compose up --build
 ```
 
 #### Запуск миграций
