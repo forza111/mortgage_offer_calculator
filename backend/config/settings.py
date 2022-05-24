@@ -4,6 +4,7 @@ import unittest
 import faker.config
 from django.utils.translation import gettext_lazy as _
 
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.getenv("SECRET_KEY", "rw+t6fn87n-r+9%$s^r8hvja2yux(rz#!8th3_1^e2^z-9!3!l")
@@ -77,13 +78,13 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.postgresql"),
         "NAME": "postgres",
-        "USER": "postgres",
-        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
-        "HOST": "db",
-        "PORT": 5432,
-        "CONN_MAX_AGE": 600,
+        "USER": os.environ.get("POSTGRES_USER", "postgres"),
+        "PASSWORD": os.environ.get("POSTGRES_PASSWORD", "postgres"),
+        "HOST": os.environ.get("POSTGRES_HOST", "localhost"),
+        "PORT": os.environ.get("POSTGRES_PORT", "5432"),
+        "CONN_MAX_AGE": int(os.environ.get("CONN_MAX_AGE", 600)),
     }
 }
 

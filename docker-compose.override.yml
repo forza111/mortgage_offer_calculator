@@ -7,10 +7,10 @@ services:
     volumes:
       - ./backend/:/app/:cached
       - static:/app/static/:delegated
-    entrypoint: sh wait-for db:5432 -- ./entrypoint.sh
     command: python manage.py runserver 0.0.0.0:8000
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     ports:
     - 8000:8000
 
@@ -18,3 +18,9 @@ services:
     restart: unless-stopped
     ports:
       - 15202:5432
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "${POSTGRES_DB-mortgage_calculator_db}", "-U", "${POSTGRES_USER-postgres}" ]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+
