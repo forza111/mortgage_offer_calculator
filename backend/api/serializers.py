@@ -1,15 +1,16 @@
 from rest_framework import serializers
-from .models import MortageOffer
+from .models import MortgageOffer
 
-class MortageOfferSerializer(serializers.ModelSerializer):
+
+class MortgageOfferSerializer(serializers.ModelSerializer):
     payment = serializers.IntegerField(required=False)
 
     class Meta:
-        model = MortageOffer
+        model = MortgageOffer
         fields = "__all__"
 
 
-class MortageOfferCreateSerializer(serializers.ModelSerializer):
+class MortgageOfferCreateSerializer(serializers.ModelSerializer):
     def validate(self, data):
         if not 1 <= data["term_min"] <= 80:
             raise serializers.ValidationError({"term_min": "Допустимый диапазон значений: 1-80 "})
@@ -32,6 +33,6 @@ class MortageOfferCreateSerializer(serializers.ModelSerializer):
         return data
 
     class Meta:
-        model = MortageOffer
+        model = MortgageOffer
         exclude = ("id", )
 

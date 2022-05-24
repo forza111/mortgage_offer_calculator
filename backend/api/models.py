@@ -1,6 +1,7 @@
 from django.db import models
 
-class MortageOffer(models.Model):
+
+class MortgageOffer(models.Model):
     bank_name = models.CharField(max_length=200)
     term_min = models.IntegerField()
     term_max = models.IntegerField()

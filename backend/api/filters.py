@@ -1,6 +1,7 @@
 from django_filters import rest_framework as filters
 
-from .models import MortageOffer
+from .models import MortgageOffer
+
 
 class OfferFilter(filters.FilterSet):
     rate_min = filters.NumberFilter(field_name="rate_min", lookup_expr="gte")
@@ -9,5 +10,5 @@ class OfferFilter(filters.FilterSet):
     payment_max = filters.NumberFilter(field_name="payment_max", lookup_expr="lte")
 
     class Meta:
-        model = MortageOffer
+        model = MortgageOffer
         fields = ("rate_min", "rate_max", "payment_min", "payment_max")
