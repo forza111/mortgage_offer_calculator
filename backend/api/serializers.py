@@ -11,6 +11,8 @@ class MortgageOfferSerializer(serializers.ModelSerializer):
 
 
 class MortgageOfferCreateSerializer(serializers.ModelSerializer):
+    id = serializers.ReadOnlyField()
+
     def validate(self, data):
         if not 1 <= data["term_min"] <= 80:
             raise serializers.ValidationError({"term_min": "Допустимый диапазон значений: 1-80 "})
@@ -34,5 +36,4 @@ class MortgageOfferCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = MortgageOffer
-        exclude = ("id", )
-
+        fields = "__all__"

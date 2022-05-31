@@ -33,7 +33,6 @@ class OfferViewSet(viewsets.ModelViewSet):
         queryset = MortgageOffer.objects.filter(
             Q(payment_max__gte=amount) & (Q(payment_min__lte=amount)) & (Q(term_max__gte=term)) & (Q(term_min__lte=term)))\
             .annotate(payment=get_monthly_payment(amount=amount, loan_rate=F("rate_min"), years=int(term)))
-        print(order)
         if order == "payment" or order == "-payment":
             queryset = queryset.order_by(order)
         return queryset
